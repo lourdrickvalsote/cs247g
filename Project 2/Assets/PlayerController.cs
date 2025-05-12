@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float speed = 5f;
+    public float jumpForce = 7f;         // Force applied when jumping
+    public float jumpCooldown = 0.2f;    // Time before player can jump again
     
     [Header("Ground Detection")]
     public float groundDetectionHeight = 1f;    // Height to start the raycast from
@@ -21,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool isGrounded;
     private RaycastHit groundHit;
+    private bool jumpRequested;
+    private float lastJumpTime;
 
     void Start()
     {
@@ -62,8 +66,15 @@ public class PlayerController : MonoBehaviour
         // Apply velocity
         rb.linearVelocity = targetVelocity;
         
+        // Process jump requests
+        if (jumpRequested)
+        {
+            PerformJump();
+            jumpRequested = false;
+        }
+        
         // Apply ground snapping if needed
-        if (isGrounded)
+        if (isGrounded && Time.time > lastJumpTime + jumpCooldown)
         {
             SnapToGround();
         }
@@ -72,6 +83,41 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+    
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        // Only register jump on button press, not release
+        if (context.started)
+        {
+            // Queue jump request if we're grounded
+            if (isGrounded && Time.time > lastJumpTime + jumpCooldown)
+            {
+                jumpRequested = true;
+                
+                if (debugGroundDetection)
+                {
+                    Debug.Log("Jump requested");
+                }
+            }
+        }
+    }
+
+    void PerformJump()
+    {
+        // Apply jump force
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        
+        // Update last jump time
+        lastJumpTime = Time.time;
+        
+        // Set grounded to false immediately
+        isGrounded = false;
+        
+        if (debugGroundDetection)
+        {
+            Debug.Log($"Jump performed with force: {jumpForce}");
+        }
     }
 
     bool DetectGround()
