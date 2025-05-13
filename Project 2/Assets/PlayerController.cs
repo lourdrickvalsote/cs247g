@@ -103,48 +103,55 @@ public class PlayerController : MonoBehaviour
 
     void performLayerChange()
     {
-        // inLayer = Input.GetKeyDown(KeyCode.UpArrow);
-        // outLayer = Input.GetKeyDown(KeyCode.DownArrow);
-        // if (moveInput.y > 0)
-        // {
-        //     // print("you want to go into the screen");
-        //     if (currLayer == LAYER.mid)
-        //     {
-        //         print("you're in the mid and want to go to the back");
-        //         yPosition = -yDist;
-        //         currLayer = LAYER.back;
-        //     } else if (currLayer == LAYER.fore)
-        //     {
-        //         print("you're in the fore and want to go to the mid");
-        //         yPosition = 0;
-        //         currLayer = LAYER.mid;
-        //     } else
-        //     {
-        //         print("you're in the back and want to go further back, not allowed!");
-        //     }
-        // } else if (moveInput.y < 0)
-        // {
-        //     print("you want to come out of the screen");
-        // }
-        // rb.MovePosition((yPosition - transform.position.z) * Vector3.forward);
         print("attempting to perform layer change");
+        int borderFlag = 0;
         if (moveInput.y > 0)
         {
-            yPosition = yDist;
-            print("you want to go into the screen");
+            yPosition = 10f;
+            if (currLayer == LAYER.mid)
+            {
+                print("you're in the mid and want to go to the back");
+                currLayer = LAYER.back;
+            } else if (currLayer == LAYER.fore)
+            {
+                print("you're in the fore and want to go to the mid");
+                currLayer = LAYER.mid;
+            } else
+            {
+                print("you're in the back and want to go further back, not allowed!");
+                yPosition = 0f;
+                borderFlag = 1;
+            }
+            Debug.Log($"y-direction intended in if-statement: {yPosition}");
+
         } else if (moveInput.y < 0)
         {
-            yPosition = -yDist;
-            print("you want to go out of the screen");
+            yPosition = -10f;
+            if (currLayer == LAYER.mid)
+            {
+                print("you're in the mid and want to go to the fore");
+                currLayer = LAYER.fore;
+            } else if (currLayer == LAYER.back)
+            {
+                print("you're in the back and want to go to the mid");
+                currLayer = LAYER.mid;
+            } else
+            {
+                print("you're in the fore and want to go further forward, not allowed!");
+                yPosition = 0f;
+                borderFlag = 1;
+            }
+            Debug.Log($"y-direction intended in if-statement: {yPosition}");
         }
-        // rb.MovePosition(transform.position + Vector3.forward * Time.fixedDeltaTime * 5f);
-        // rb.MovePosition((yPosition - transform.position.z) * Vector3.forward);
-        // Vector3 moveDirection = (yPosition - transform.position.z) * Vector3.forward * Time.fixedDeltaTime * speed;
-        // rb.linearVelocity = moveDirection;
-        // Vector3 newPosition = yPosition * Vector3.forward * speed;
-        // newPosition.x = rb.position.x;
-        // rb.MovePosition(newPosition);
-        rb.MovePosition(-10f * Vector3.forward);
+        if (borderFlag == 1)
+        {
+            // do nothing, move is disallowed
+        } else
+        {
+            Vector3 newPosition = (rb.position.z + yPosition) * Vector3.forward;
+            newPosition.x = rb.position.x;
+            rb.MovePosition(newPosition);
+        }
     }
 
     public void OnLayerChange(InputAction.CallbackContext context)
@@ -166,6 +173,10 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         if (moveInput.y != 0)
         {
+            print("changing depth layer");
+            // Debug.Log($"input (x,y): {(moveInput.x), (moveInput.y)}");
+            Debug.Log($"input x: {moveInput.x}");
+            Debug.Log($"input y: {moveInput.y}");
             OnLayerChange(context);
         }
     }
