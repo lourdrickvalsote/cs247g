@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a6800ec55fd981a458a652a6c9eb55c1
+labels:
+- Material
+- Vegetation
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/Materials/PGDemo_MeshBlades_Brightened.mat
+  uploadId: 471879

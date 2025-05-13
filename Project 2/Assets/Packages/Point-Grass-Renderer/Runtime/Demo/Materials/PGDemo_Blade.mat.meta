@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f7bc96225726e0641a6653092cea035f
+labels:
+- Material
+- Vegetation
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/Materials/PGDemo_Blade.mat
+  uploadId: 471879

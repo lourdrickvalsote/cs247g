@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 827ff8b98f44d0c458ea8f8990bbc410
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/Scenes/PG_SampleScene/LightingData.asset
+  uploadId: 471879

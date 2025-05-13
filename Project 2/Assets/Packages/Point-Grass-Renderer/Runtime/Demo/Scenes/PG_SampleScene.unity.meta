@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 07d6b96c4a42b9c4690c3e51977373b3
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/Scenes/PG_SampleScene.unity
+  uploadId: 471879

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c3932a929b5ba2241962f04a2fec6186
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/Prefabs/PG_EXAMPLE_MeshDistribution.prefab
+  uploadId: 471879

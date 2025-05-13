@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c18288fc173c17f45b6f34b969db319e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/Textures/Ground Textures/Terrain
+    Layers/PG_EXAMPLE_Grass.terrainlayer
+  uploadId: 471879

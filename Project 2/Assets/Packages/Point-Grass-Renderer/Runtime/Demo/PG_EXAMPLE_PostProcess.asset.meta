@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e974481b18f85b74ea695309ae4bdb27
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207854
+  packageName: Point Grass Renderer
+  packageVersion: 1.1.0
+  assetPath: Assets/Packages/Point-Grass-Renderer/Runtime/Demo/PG_EXAMPLE_PostProcess.asset
+  uploadId: 471879
