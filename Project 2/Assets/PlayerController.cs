@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour
             } else
             {
                 print("you're in the back and want to go further back, not allowed!");
-                yPosition = 0f;
                 borderFlag = 1;
             }
             Debug.Log($"y-direction intended in if-statement: {yPosition}");
@@ -138,7 +137,6 @@ public class PlayerController : MonoBehaviour
             } else
             {
                 print("you're in the fore and want to go further forward, not allowed!");
-                yPosition = 0f;
                 borderFlag = 1;
             }
             Debug.Log($"y-direction intended in if-statement: {yPosition}");
@@ -149,6 +147,7 @@ public class PlayerController : MonoBehaviour
         } else
         {
             Vector3 newPosition = (rb.position.z + yPosition) * Vector3.forward;
+            newPosition.y = rb.position.y;
             newPosition.x = rb.position.x;
             rb.MovePosition(newPosition);
         }
