@@ -1,12 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[System.Serializable]
+public enum LAYER {back, mid, fore}
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float speed = 5f;
     public float jumpForce = 7f;         // Force applied when jumping
     public float jumpCooldown = 0.2f;    // Time before player can jump again
+    public LAYER currLayer = LAYER.mid;  // initalize player location in midground
+    // public bool inLayer;
+    // public bool outLayer;
+    float yPosition;
+    public float layerCooldown = 0.2f;   // time before player can change layers again
+    public float yDist = 10f;               // distance moved between layers
+    // public float yLoc = 1;               // current location of player
     
     [Header("Ground Detection")]
     public float groundDetectionHeight = 1f;    // Height to start the raycast from
@@ -25,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private RaycastHit groundHit;
     private bool jumpRequested;
     private float lastJumpTime;
+    private bool layerChangeRequested;
+    private float lastChangeTime;
 
     void Start()
     {
@@ -38,6 +49,8 @@ public class PlayerController : MonoBehaviour
         // Freeze rotation to prevent tipping over
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         
+        transform.position = Vector3.zero;
+
         // Initial ground snap
         SnapToGroundImmediate();
     }
@@ -57,15 +70,23 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Apply horizontal movement
-        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+        // Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+        Vector3 moveDirection = new Vector3(moveInput.x, 0, 0);
         Vector3 targetVelocity = moveDirection * speed;
         
         // Preserve current Y velocity (for gravity/falling)
         targetVelocity.y = rb.linearVelocity.y;
-        
+
         // Apply velocity
         rb.linearVelocity = targetVelocity;
-        
+
+        // rail running, similar to jump requests
+        if (layerChangeRequested)
+        {
+            performLayerChange();
+            layerChangeRequested = false;
+        }
+
         // Process jump requests
         if (jumpRequested)
         {
@@ -80,9 +101,86 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void performLayerChange()
+    {
+        print("attempting to perform layer change");
+        int borderFlag = 0;
+        if (moveInput.y > 0)
+        {
+            yPosition = 10f;
+            if (currLayer == LAYER.mid)
+            {
+                print("you're in the mid and want to go to the back");
+                currLayer = LAYER.back;
+            } else if (currLayer == LAYER.fore)
+            {
+                print("you're in the fore and want to go to the mid");
+                currLayer = LAYER.mid;
+            } else
+            {
+                print("you're in the back and want to go further back, not allowed!");
+                borderFlag = 1;
+            }
+            Debug.Log($"y-direction intended in if-statement: {yPosition}");
+
+        } else if (moveInput.y < 0)
+        {
+            yPosition = -10f;
+            if (currLayer == LAYER.mid)
+            {
+                print("you're in the mid and want to go to the fore");
+                currLayer = LAYER.fore;
+            } else if (currLayer == LAYER.back)
+            {
+                print("you're in the back and want to go to the mid");
+                currLayer = LAYER.mid;
+            } else
+            {
+                print("you're in the fore and want to go further forward, not allowed!");
+                borderFlag = 1;
+            }
+            Debug.Log($"y-direction intended in if-statement: {yPosition}");
+        }
+        if (borderFlag == 1)
+        {
+            // do nothing, move is disallowed
+        } else
+        {
+            Vector3 newPosition = (rb.position.z + yPosition) * Vector3.forward;
+            newPosition.y = rb.position.y;
+            newPosition.x = rb.position.x;
+            rb.MovePosition(newPosition);
+        }
+    }
+
+    public void OnLayerChange(InputAction.CallbackContext context)
+    {
+        // register layer change on button press
+        if (context.started)
+        {
+            print("changing depth layer");
+            float value = context.ReadValue<float>(); 
+            // queue layer change only if cooldown passed
+            if (Time.time > lastChangeTime + layerCooldown && Mathf.Abs(value) > 0.1f)
+            {
+                moveInput.y = Mathf.Sign(value);
+                layerChangeRequested = true;
+                Debug.Log("Layer change requested");
+            }
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        // if (moveInput.y != 0)
+        // {
+        //     print("changing depth layer");
+        //     // Debug.Log($"input (x,y): {(moveInput.x), (moveInput.y)}");
+        //     Debug.Log($"input x: {moveInput.x}");
+        //     Debug.Log($"input y: {moveInput.y}");
+        //     OnLayerChange(context);
+        // }
     }
     
     public void OnJump(InputAction.CallbackContext context)
