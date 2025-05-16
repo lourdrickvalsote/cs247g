@@ -186,7 +186,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        // m_Player_LayerChange = m_Player.FindAction("LayerChange", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()

@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         
         // Preserve current Y velocity (for gravity/falling)
         targetVelocity.y = rb.linearVelocity.y;
-        
+
         // Apply velocity
         rb.linearVelocity = targetVelocity;
 
@@ -158,9 +158,12 @@ public class PlayerController : MonoBehaviour
         // register layer change on button press
         if (context.started)
         {
+            print("changing depth layer");
+            float value = context.ReadValue<float>(); 
             // queue layer change only if cooldown passed
-            if (Time.time > lastChangeTime + layerCooldown)
+            if (Time.time > lastChangeTime + layerCooldown && Mathf.Abs(value) > 0.1f)
             {
+                moveInput.y = Mathf.Sign(value);
                 layerChangeRequested = true;
                 Debug.Log("Layer change requested");
             }
@@ -170,14 +173,14 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        if (moveInput.y != 0)
-        {
-            print("changing depth layer");
-            // Debug.Log($"input (x,y): {(moveInput.x), (moveInput.y)}");
-            Debug.Log($"input x: {moveInput.x}");
-            Debug.Log($"input y: {moveInput.y}");
-            OnLayerChange(context);
-        }
+        // if (moveInput.y != 0)
+        // {
+        //     print("changing depth layer");
+        //     // Debug.Log($"input (x,y): {(moveInput.x), (moveInput.y)}");
+        //     Debug.Log($"input x: {moveInput.x}");
+        //     Debug.Log($"input y: {moveInput.y}");
+        //     OnLayerChange(context);
+        // }
     }
     
     public void OnJump(InputAction.CallbackContext context)
