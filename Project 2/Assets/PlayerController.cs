@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         int borderFlag = 0;
         if (moveInput.y > 0)
         {
-            yPosition = 10f;
+            yPosition = 5f;
             if (currLayer == LAYER.mid)
             {
                 print("you're in the mid and want to go to the back");
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
         } else if (moveInput.y < 0)
         {
-            yPosition = -10f;
+            yPosition = -5f;
             if (currLayer == LAYER.mid)
             {
                 print("you're in the mid and want to go to the fore");
