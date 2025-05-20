@@ -10,12 +10,9 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7f;         // Force applied when jumping
     public float jumpCooldown = 0.2f;    // Time before player can jump again
     public LAYER currLayer = LAYER.mid;  // initalize player location in midground
-    // public bool inLayer;
-    // public bool outLayer;
     float yPosition;
     public float layerCooldown = 0.2f;   // time before player can change layers again
     public float yDist = 10f;               // distance moved between layers
-    // public float yLoc = 1;               // current location of player
     
     [Header("Ground Detection")]
     public float groundDetectionHeight = 1f;    // Height to start the raycast from
@@ -36,19 +33,20 @@ public class PlayerController : MonoBehaviour
     private float lastJumpTime;
     private bool layerChangeRequested;
     private float lastChangeTime;
+    public bool dropRequested;
 
     void Start()
     {
         // Get components if not assigned
         if (rb == null)
             rb = GetComponent<Rigidbody>();
-        
+
         if (sr == null)
             sr = GetComponentInChildren<SpriteRenderer>();
 
         // Freeze rotation to prevent tipping over
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        
+
         transform.position = Vector3.zero;
 
         // Initial ground snap
@@ -62,7 +60,7 @@ public class PlayerController : MonoBehaviour
             sr.flipX = false;
         else if (moveInput.x > 0)
             sr.flipX = true;
-            
+
         // Detect ground each frame to update isGrounded state
         DetectGround();
     }
@@ -170,17 +168,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnPlatformDrop(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            dropRequested = true;
+            Debug.Log("Platform drop requested");
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        // if (moveInput.y != 0)
-        // {
-        //     print("changing depth layer");
-        //     // Debug.Log($"input (x,y): {(moveInput.x), (moveInput.y)}");
-        //     Debug.Log($"input x: {moveInput.x}");
-        //     Debug.Log($"input y: {moveInput.y}");
-        //     OnLayerChange(context);
-        // }
     }
     
     public void OnJump(InputAction.CallbackContext context)

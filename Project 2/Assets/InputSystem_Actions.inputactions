@@ -45,7 +45,7 @@
                     "name": "Crouch",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -81,7 +81,7 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PlatformDrop",
+                    "type": "Button",
+                    "id": "cb147d86-c575-40a0-8b3c-de9aaa4c7874",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -342,7 +351,7 @@
                 {
                     "name": "",
                     "id": "eb40bb66-4559-4dfa-9a2f-820438abb426",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch",
@@ -430,8 +439,8 @@
                 {
                     "name": "",
                     "id": "36e52cba-0905-478e-a818-f4bfcb9f3b9a",
-                    "path": "<Keyboard>/WASD",
-                    "interactions": "",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crouch",
@@ -452,7 +461,7 @@
                 {
                     "name": "negative",
                     "id": "07b04c72-a7ca-4276-955b-5b3dc1063c31",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -463,7 +472,7 @@
                 {
                     "name": "positive",
                     "id": "5991794a-3208-41ce-bf88-0c3e150605ce",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -472,35 +481,35 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "18589584-94fa-4f30-94bf-c3f43602cc89",
-                    "path": "1DAxis",
+                    "name": "One Modifier",
+                    "id": "acd83b28-f3a9-4cc0-9fd7-02e0ad17c209",
+                    "path": "OneModifier",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LayerChange",
+                    "action": "PlatformDrop",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "41cb646e-2be7-470b-ad0c-1f61b0c61568",
-                    "path": "<Keyboard>/s",
+                    "name": "modifier",
+                    "id": "a107b2ad-621b-438e-8f36-f5979315edea",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LayerChange",
+                    "action": "PlatformDrop",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "62db4708-8e33-4c25-92fc-d504944c42fd",
-                    "path": "<Keyboard>/w",
+                    "name": "binding",
+                    "id": "c9f9f3dd-d79c-4d45-8320-38f35ac12870",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LayerChange",
+                    "action": "PlatformDrop",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
