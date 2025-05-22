@@ -26,13 +26,16 @@ public class PassThroughPlatform3D : MonoBehaviour
             // Reset request so it doesn't keep triggering
             player.dropRequested = false;
 
+            // fix collision
+            StartCoroutine(RestoreCollision(player));
+
             Debug.Log($"Ignoring collision between {_collider.name} and {player.GetComponent<Collider>().name}");
         }
     }
 
     private System.Collections.IEnumerator RestoreCollision(PlayerController player)
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.4f);
 
         if (player != null)
         {
