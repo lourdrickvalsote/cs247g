@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private bool layerChangeRequested;
     private float lastChangeTime;
     public bool dropRequested;
+    private float currentZ = 0f;
 
     void Start()
     {
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         transform.position = Vector3.zero;
+
+        currentZ = rb.position.z;
 
         // Initial ground snap
         SnapToGroundImmediate();
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
         // Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         Vector3 moveDirection = new Vector3(moveInput.x, 0, 0);
         Vector3 targetVelocity = moveDirection * speed;
-        
+
         // Preserve current Y velocity (for gravity/falling)
         targetVelocity.y = rb.linearVelocity.y;
 
@@ -91,12 +94,17 @@ public class PlayerController : MonoBehaviour
             PerformJump();
             jumpRequested = false;
         }
-        
+
         // Apply ground snapping if needed
         if (isGrounded && Time.time > lastJumpTime + jumpCooldown)
         {
             SnapToGround();
         }
+
+        // Debug.Log($"[FixedUpdate End] rb.position = {rb.position}, rb.velocity = {rb.linearVelocity}");
+        Vector3 correctedPosition = rb.position;
+        correctedPosition.z = currentZ;
+        rb.MovePosition(correctedPosition);
     }
 
     void performLayerChange()
@@ -142,12 +150,20 @@ public class PlayerController : MonoBehaviour
         if (borderFlag == 1)
         {
             // do nothing, move is disallowed
-        } else
+        }
+        else
         {
-            Vector3 newPosition = (rb.position.z + yPosition) * Vector3.forward;
-            newPosition.y = rb.position.y;
-            newPosition.x = rb.position.x;
+            // Vector3 newPosition = (rb.position.z + yPosition) * Vector3.forward;
+            // newPosition.y = rb.position.y;
+            // newPosition.x = rb.position.x;
+            // rb.MovePosition(newPosition);
+            currentZ = rb.position.z + yPosition;
+            Vector3 newPosition = rb.position;
+            newPosition.z += yPosition;
+            Debug.Log($"[LayerChange] Current Z: {rb.position.z}, yPosition: {yPosition}, New Z: {newPosition.z}");
             rb.MovePosition(newPosition);
+            lastChangeTime = Time.time;
+            moveInput.y = 0f;
         }
     }
 
