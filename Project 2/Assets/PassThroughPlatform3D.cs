@@ -21,51 +21,22 @@ public class PassThroughPlatform3D : MonoBehaviour
             Debug.Log("Pass-through triggered");
 
             // Disable collider temporarily to allow fall-through
-            Physics.IgnoreCollision(_collider, player.GetComponent<Collider>(), true);
+            Physics.IgnoreLayerCollision(_collider.gameObject.layer, player.GetComponent<Collider>().gameObject.layer, true);
 
             // Reset request so it doesn't keep triggering
             player.dropRequested = false;
 
-            // Optional: Re-enable collision after a delay
-            StartCoroutine(RestoreCollision(player));
+            Debug.Log($"Ignoring collision between {_collider.name} and {player.GetComponent<Collider>().name}");
         }
     }
 
     private System.Collections.IEnumerator RestoreCollision(PlayerController player)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
 
         if (player != null)
         {
-            Physics.IgnoreCollision(_collider, player.GetComponent<Collider>(), false);
+            Physics.IgnoreLayerCollision(_collider.gameObject.layer, player.GetComponent<Collider>().gameObject.layer, false);
         }
     }
-
-    // private void Update()
-    // {
-    //     var player = other.gameObject.GetComponent<PlayerController>();
-    //     if (_playerOnPlatform && player.dropRequested)
-    //     {
-
-    //     }
-    // }
-
-    // private void SetPlayerOnPlatform(BoxCollider other, bool value)
-    // {
-    //     var player = other.gameObject.GetComponent<PlayerController>();
-    //     if (player != null)
-    //     {
-    //         _playerOnPlatform = value;
-    //     }
-    // }
-
-    // private void OnCollisionEnter3D(BoxCollider other)
-    // {
-    //     SetPlayerOnPlatform(other, true);
-    // }
-
-    // private void OnCollisionExit3D(BoxCollider other)
-    // {
-    //     SetPlayerOnPlatform(other, true);
-    // }
 }
