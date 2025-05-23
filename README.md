@@ -1,2 +1,5 @@
 # CS247G Project 2 – Level Design and Architecture
 This repository contains the source code for Team 15 (Lour Drick Valsote, Elliott Rodgers, Amaru Ordóñez-Jacobson) in Stanford's CS247G Project 2. Our game is called [GAME NAME TBD], and is largely developed in Unity. Updates and changes to the source code will be made on this repository to allow group members to make changes remotely as well as keep tabs on group participation/involvement.
+
+*BIBLICALLY ACCURATE CODEBASE:*
+![](misc/mrw_reading_codebase.gif)
