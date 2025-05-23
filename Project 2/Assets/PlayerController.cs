@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [Header("Components")]
     public Rigidbody rb;
     public SpriteRenderer sr;
+    public Animator animator;  // ADD THIS LINE
 
     // Internal variables
     private Vector2 moveInput;
@@ -45,6 +46,10 @@ public class PlayerController : MonoBehaviour
         if (sr == null)
             sr = GetComponentInChildren<SpriteRenderer>();
 
+        // ADD THIS BLOCK
+        if (animator == null)
+            animator = GetComponent<Animator>();
+
         // Freeze rotation to prevent tipping over
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
@@ -60,12 +65,34 @@ public class PlayerController : MonoBehaviour
     {
         // Flip sprite based on movement direction
         if (moveInput.x < 0)
+        {
             sr.flipX = false;
+            Debug.Log("face left");
+        }
         else if (moveInput.x > 0)
+        {
             sr.flipX = true;
+            Debug.Log("face right");
+        }
+
+        // ADD ANIMATION UPDATES HERE
+            UpdateAnimations();
 
         // Detect ground each frame to update isGrounded state
         DetectGround();
+    }
+
+    // ADD THIS NEW METHOD
+    void UpdateAnimations()
+    {
+        if (animator == null) return;
+
+        // Update movement speed (for walk/run animations)
+        float movementSpeed = Mathf.Abs(moveInput.x);
+        animator.SetFloat("Speed", movementSpeed);
+
+        // Update grounded state (for jump/land animations)
+        animator.SetBool("IsGrounded", isGrounded);
     }
 
     void FixedUpdate()
@@ -109,22 +136,22 @@ public class PlayerController : MonoBehaviour
 
     void performLayerChange()
     {
-        print("attempting to perform layer change");
+        Debug.Log("attempting to perform layer change");
         int borderFlag = 0;
         if (moveInput.y > 0)
         {
             yPosition = 5f;
             if (currLayer == LAYER.mid)
             {
-                print("you're in the mid and want to go to the back");
+                Debug.Log("you're in the mid and want to go to the back");
                 currLayer = LAYER.back;
             } else if (currLayer == LAYER.fore)
             {
-                print("you're in the fore and want to go to the mid");
+                Debug.Log("you're in the fore and want to go to the mid");
                 currLayer = LAYER.mid;
             } else
             {
-                print("you're in the back and want to go further back, not allowed!");
+                Debug.Log("you're in the back and want to go further back, not allowed!");
                 borderFlag = 1;
             }
             Debug.Log($"y-direction intended in if-statement: {yPosition}");
@@ -134,15 +161,15 @@ public class PlayerController : MonoBehaviour
             yPosition = -5f;
             if (currLayer == LAYER.mid)
             {
-                print("you're in the mid and want to go to the fore");
+                Debug.Log("you're in the mid and want to go to the fore");
                 currLayer = LAYER.fore;
             } else if (currLayer == LAYER.back)
             {
-                print("you're in the back and want to go to the mid");
+                Debug.Log("you're in the back and want to go to the mid");
                 currLayer = LAYER.mid;
             } else
             {
-                print("you're in the fore and want to go further forward, not allowed!");
+                Debug.Log("you're in the fore and want to go further forward, not allowed!");
                 borderFlag = 1;
             }
             Debug.Log($"y-direction intended in if-statement: {yPosition}");
@@ -172,7 +199,7 @@ public class PlayerController : MonoBehaviour
         // register layer change on button press
         if (context.started)
         {
-            print("changing depth layer");
+            Debug.Log("changing depth layer");
             float value = context.ReadValue<float>(); 
             // queue layer change only if cooldown passed
             if (Time.time > lastChangeTime + layerCooldown && Mathf.Abs(value) > 0.1f)
@@ -226,6 +253,12 @@ public class PlayerController : MonoBehaviour
         
         // Set grounded to false immediately
         isGrounded = false;
+
+        // ADD ANIMATION TRIGGER FOR JUMP
+        if (animator != null)
+        {
+            animator.SetTrigger("Jump");
+        }
         
         if (debugGroundDetection)
         {
