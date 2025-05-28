@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 7f;         // Force applied when jumping
     public float jumpCooldown = 0.2f;    // Time before player can jump again
-    public LAYER currLayer = LAYER.mid;  // initalize player location in midground
+    public LAYER currLayer = LAYER.fore;  // initalize player location in midground
     float yPosition;
     public float layerCooldown = 0.2f;   // time before player can change layers again
     public float yDist = 10f;               // distance moved between layers
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool layerChangeRequested;
     private float lastChangeTime;
     public bool dropRequested;
-    private float currentZ = 0f;
+    public float currentZ = 0f;
 
     void Start()
     {
