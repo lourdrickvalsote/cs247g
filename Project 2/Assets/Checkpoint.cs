@@ -4,12 +4,13 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public PlayerController controller;
+    public PlayerRespawn respawn;
     [Header("Checkpoint Visuals")]
     public GameObject activeVisual;   // Object to show when checkpoint is active
     public GameObject inactiveVisual; // Object to show when checkpoint is inactive
     
     [Header("Lane Settings")]
-    public float respawnZPosition = 0f; // Set this to specify which lane to respawn in
+    public float respawnZPosition = 0f; 
     public LAYER checkpointLayer;
     
     [Header("Effects")]
@@ -51,6 +52,7 @@ public class Checkpoint : MonoBehaviour
         
         // Set this as the current checkpoint
         CheckpointManager.Instance.SetCheckpoint(respawnPosition);
+        respawn.checkpoint = this;
         checkpointLayer = controller.currLayer;
         
         // Deactivate all other checkpoints
