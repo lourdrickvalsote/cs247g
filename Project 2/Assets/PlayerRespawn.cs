@@ -55,10 +55,6 @@ public class PlayerRespawn : MonoBehaviour
     
     private void Respawn()
     {
-        //PlayerController.currentZ = CheckpointManager.Instance.GetLastCheckpoint().z;
-        //float checkpoint = CheckpointManager.Instance.GetLastCheckpoint().z;
-        //PlayerController.currentZ = checkpoint;
-        //PlayerController.currentZ = Checkpoint.respawnZPosition;
         controller.currentZ = checkpoint.respawnZPosition;
         controller.currLayer = checkpoint.checkpointLayer;
         CheckpointManager.Instance.RespawnPlayer();
@@ -70,11 +66,10 @@ public class PlayerRespawn : MonoBehaviour
     
     private void DisablePlayerControls()
     {
-        // Disable player movement script if you have one
-        var playerController = GetComponent<PlayerController>(); // Replace with your player controller script
+        var playerController = GetComponent<PlayerController>(); 
         if (playerController != null)
         {
-            // playerController.enabled = false;
+            playerController.enabled = false;
         }
         
         // Stop player physics
@@ -96,10 +91,10 @@ public class PlayerRespawn : MonoBehaviour
     private void EnablePlayerControls()
     {
         // Re-enable player movement script
-        var playerController = GetComponent<MonoBehaviour>(); // Replace with your player controller script
+        var playerController = GetComponent<PlayerController>(); 
         if (playerController != null)
         {
-            // playerController.enabled = true;
+            playerController.enabled = true;
         }
         
         // Resume player physics
