@@ -13,14 +13,14 @@ public class PlayerController : MonoBehaviour
     float yPosition;
     public float layerCooldown = 0.2f;   // time before player can change layers again
     public float yDist = 10f;               // distance moved between layers
-    
+
     [Header("Ground Detection")]
     public float groundDetectionHeight = 1f;    // Height to start the raycast from
     public float groundSnapDistance = 2f;       // Maximum distance to snap to ground
     public float groundOffset = 0.1f;           // Desired distance above ground
     public LayerMask terrainLayer;
     public bool debugGroundDetection = true;    // Enable visualization
-    
+
     [Header("Components")]
     public Rigidbody rb;
     public SpriteRenderer sr;
@@ -67,16 +67,16 @@ public class PlayerController : MonoBehaviour
         if (moveInput.x < 0)
         {
             sr.flipX = false;
-            Debug.Log("face left");
+            // Debug.Log("face left");
         }
         else if (moveInput.x > 0)
         {
             sr.flipX = true;
-            Debug.Log("face right");
+            // Debug.Log("face right");
         }
 
         // ADD ANIMATION UPDATES HERE
-            UpdateAnimations();
+        UpdateAnimations();
 
         // Detect ground each frame to update isGrounded state
         DetectGround();
@@ -145,29 +145,34 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("you're in the mid and want to go to the back");
                 currLayer = LAYER.back;
-            } else if (currLayer == LAYER.fore)
+            }
+            else if (currLayer == LAYER.fore)
             {
                 Debug.Log("you're in the fore and want to go to the mid");
                 currLayer = LAYER.mid;
-            } else
+            }
+            else
             {
                 Debug.Log("you're in the back and want to go further back, not allowed!");
                 borderFlag = 1;
             }
             Debug.Log($"y-direction intended in if-statement: {yPosition}");
 
-        } else if (moveInput.y < 0)
+        }
+        else if (moveInput.y < 0)
         {
             yPosition = -5f;
             if (currLayer == LAYER.mid)
             {
                 Debug.Log("you're in the mid and want to go to the fore");
                 currLayer = LAYER.fore;
-            } else if (currLayer == LAYER.back)
+            }
+            else if (currLayer == LAYER.back)
             {
                 Debug.Log("you're in the back and want to go to the mid");
                 currLayer = LAYER.mid;
-            } else
+            }
+            else
             {
                 Debug.Log("you're in the fore and want to go further forward, not allowed!");
                 borderFlag = 1;
@@ -200,7 +205,7 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             Debug.Log("changing depth layer");
-            float value = context.ReadValue<float>(); 
+            float value = context.ReadValue<float>();
             // queue layer change only if cooldown passed
             if (Time.time > lastChangeTime + layerCooldown && Mathf.Abs(value) > 0.1f)
             {
@@ -224,7 +229,7 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
     }
-    
+
     public void OnJump(InputAction.CallbackContext context)
     {
         // Only register jump on button press, not release
@@ -234,7 +239,7 @@ public class PlayerController : MonoBehaviour
             if (isGrounded && Time.time > lastJumpTime + jumpCooldown)
             {
                 jumpRequested = true;
-                
+
                 if (debugGroundDetection)
                 {
                     Debug.Log("Jump requested");
@@ -247,10 +252,10 @@ public class PlayerController : MonoBehaviour
     {
         // Apply jump force
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        
+
         // Update last jump time
         lastJumpTime = Time.time;
-        
+
         // Set grounded to false immediately
         isGrounded = false;
 
@@ -259,7 +264,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Jump");
         }
-        
+
         if (debugGroundDetection)
         {
             Debug.Log($"Jump performed with force: {jumpForce}");
@@ -270,34 +275,34 @@ public class PlayerController : MonoBehaviour
     {
         // Cast a ray from slightly above the character
         Vector3 rayOrigin = transform.position + Vector3.up * groundDetectionHeight;
-        
+
         // Check if we hit ground within our snap distance
         bool hitGround = Physics.Raycast(
-            rayOrigin, 
-            Vector3.down, 
-            out groundHit, 
-            groundDetectionHeight + groundSnapDistance, 
+            rayOrigin,
+            Vector3.down,
+            out groundHit,
+            groundDetectionHeight + groundSnapDistance,
             terrainLayer
         );
-        
+
         // Update grounded state
         isGrounded = hitGround;
-        
+
         // Visualize the ground detection
         if (debugGroundDetection)
         {
             Color rayColor = hitGround ? Color.green : Color.red;
             Debug.DrawRay(rayOrigin, Vector3.down * (groundDetectionHeight + groundSnapDistance), rayColor);
-            
+
             if (hitGround)
             {
                 Debug.DrawLine(groundHit.point, groundHit.point + Vector3.up * groundOffset, Color.yellow);
             }
         }
-        
+
         return hitGround;
     }
-    
+
     void SnapToGroundImmediate()
     {
         if (DetectGround())
@@ -306,7 +311,7 @@ public class PlayerController : MonoBehaviour
             Vector3 newPosition = transform.position;
             newPosition.y = groundHit.point.y + groundOffset;
             transform.position = newPosition;
-            
+
             if (debugGroundDetection)
             {
                 Debug.Log($"Initial ground snap to Y: {newPosition.y}");
@@ -318,24 +323,24 @@ public class PlayerController : MonoBehaviour
     {
         // Only snap if we're grounded
         if (!isGrounded) return;
-        
+
         // Calculate target Y position
         float targetY = groundHit.point.y + groundOffset;
-        
+
         // Calculate current distance from desired position
         float currentDistance = Mathf.Abs(rb.position.y - targetY);
-        
+
         if (currentDistance > groundOffset * 1.5f)
         {
             // For large distances, use MovePosition for smoother transition
             Vector3 targetPosition = rb.position;
             targetPosition.y = targetY;
-            
+
             // Use interpolation for smoother snapping
             float snapSpeed = 10f;
             Vector3 smoothedPosition = Vector3.Lerp(rb.position, targetPosition, Time.fixedDeltaTime * snapSpeed);
             rb.MovePosition(smoothedPosition);
-            
+
             if (debugGroundDetection)
             {
                 Debug.Log($"Snapping to ground: Target Y={targetY}, Current Y={rb.position.y}, Distance={currentDistance}");
