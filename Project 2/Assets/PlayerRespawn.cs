@@ -5,9 +5,11 @@ public class PlayerRespawn : MonoBehaviour
 {
     public Checkpoint checkpoint;
     public PlayerController controller;
+
     [Header("Death Settings")]
     public float fallThreshold = -10f; // Y position below which player dies
     public float respawnDelay = 1f;
+    public int deathCounter = 0;
     
     [Header("Effects")]
     public ParticleSystem deathEffect;
@@ -27,6 +29,7 @@ public class PlayerRespawn : MonoBehaviour
         if (!isDead && transform.position.y < fallThreshold)
         {
             Die();
+            deathCounter = deathCounter + 1;
         }
     }
     
