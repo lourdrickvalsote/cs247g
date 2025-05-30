@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 12904171}
   - component: {fileID: 12904170}
   - component: {fileID: 12904169}
-  - component: {fileID: 12904172}
   - component: {fileID: 12904174}
   m_Layer: 6
   m_Name: Cube
@@ -229,22 +228,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12904167}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &12904172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12904167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!114 &12904174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +252,6 @@ GameObject:
   - component: {fileID: 27481321}
   - component: {fileID: 27481320}
   - component: {fileID: 27481319}
-  - component: {fileID: 27481318}
   - component: {fileID: 27481317}
   m_Layer: 6
   m_Name: Cube (22)
@@ -305,22 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &27481318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27481315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &27481319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -407,7 +373,6 @@ GameObject:
   - component: {fileID: 75154497}
   - component: {fileID: 75154496}
   - component: {fileID: 75154495}
-  - component: {fileID: 75154494}
   - component: {fileID: 75154498}
   m_Layer: 6
   m_Name: Cube (9)
@@ -426,27 +391,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 175.08002, y: 8, z: 0.5}
-  m_LocalScale: {x: 5, y: 0.5, z: 2}
+  m_LocalScale: {x: 15, y: 0.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &75154494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75154492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &75154495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -545,7 +494,6 @@ GameObject:
   - component: {fileID: 138117705}
   - component: {fileID: 138117704}
   - component: {fileID: 138117703}
-  - component: {fileID: 138117702}
   - component: {fileID: 138117701}
   m_Layer: 6
   m_Name: Cube (23)
@@ -581,22 +529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &138117702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138117699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &138117703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -886,9 +818,9 @@ GameObject:
   - component: {fileID: 186575668}
   - component: {fileID: 186575671}
   - component: {fileID: 186575670}
-  - component: {fileID: 186575669}
   - component: {fileID: 186575672}
   - component: {fileID: 186575674}
+  - component: {fileID: 186575675}
   m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -911,27 +843,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &186575669
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186575667}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &186575670
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1013,6 +924,165 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &186575675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186575667}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &198404609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198404610}
+  - component: {fileID: 198404613}
+  - component: {fileID: 198404612}
+  - component: {fileID: 198404614}
+  - component: {fileID: 198404615}
+  - component: {fileID: 198404616}
+  m_Layer: 6
+  m_Name: testcube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &198404610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198404609}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11, y: -2, z: 5.5}
+  m_LocalScale: {x: 30, y: 0.5, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1936392764}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &198404612
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198404609}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &198404613
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198404609}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &198404614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198404609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entryDirection: {x: 0, y: 1, z: 0}
+  localDirection: 0
+  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
+  penetrationDepthThreshold: 0.2
+--- !u!114 &198404615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198404609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &198404616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198404609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &219695296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1095,6 @@ GameObject:
   - component: {fileID: 219695300}
   - component: {fileID: 219695299}
   - component: {fileID: 219695298}
-  - component: {fileID: 219695301}
   - component: {fileID: 219695303}
   m_Layer: 6
   m_Name: Cube (2)
@@ -1123,22 +1192,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219695296}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &219695301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219695296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1, y: 1, z: 1}
-  penetrationDepthThreshold: 0.2
 --- !u!114 &219695303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,7 +1318,6 @@ GameObject:
   - component: {fileID: 271952804}
   - component: {fileID: 271952803}
   - component: {fileID: 271952802}
-  - component: {fileID: 271952801}
   - component: {fileID: 271952805}
   m_Layer: 6
   m_Name: Cube (15)
@@ -1289,22 +1341,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &271952801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271952799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &271952802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1573,7 +1609,6 @@ GameObject:
   - component: {fileID: 339169699}
   - component: {fileID: 339169698}
   - component: {fileID: 339169697}
-  - component: {fileID: 339169696}
   - component: {fileID: 339169695}
   m_Layer: 6
   m_Name: Cube (29)
@@ -1609,22 +1644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &339169696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339169693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &339169697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1711,7 +1730,6 @@ GameObject:
   - component: {fileID: 377987026}
   - component: {fileID: 377987025}
   - component: {fileID: 377987024}
-  - component: {fileID: 377987023}
   - component: {fileID: 377987027}
   m_Layer: 6
   m_Name: Cube (10)
@@ -1735,22 +1753,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &377987023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377987021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &377987024
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1849,7 +1851,6 @@ GameObject:
   - component: {fileID: 383810793}
   - component: {fileID: 383810792}
   - component: {fileID: 383810791}
-  - component: {fileID: 383810790}
   - component: {fileID: 383810789}
   m_Layer: 6
   m_Name: Cube (21)
@@ -1885,22 +1886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &383810790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383810787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &383810791
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2108,7 +2093,6 @@ GameObject:
   - component: {fileID: 415048367}
   - component: {fileID: 415048366}
   - component: {fileID: 415048365}
-  - component: {fileID: 415048364}
   - component: {fileID: 415048368}
   m_Layer: 6
   m_Name: Cube (7)
@@ -2132,22 +2116,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &415048364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415048362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &415048365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2246,7 +2214,6 @@ GameObject:
   - component: {fileID: 512225892}
   - component: {fileID: 512225891}
   - component: {fileID: 512225890}
-  - component: {fileID: 512225893}
   - component: {fileID: 512225895}
   m_Layer: 6
   m_Name: Cube (3)
@@ -2344,22 +2311,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512225888}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &512225893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 512225888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!114 &512225895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2384,7 +2335,6 @@ GameObject:
   - component: {fileID: 596211914}
   - component: {fileID: 596211913}
   - component: {fileID: 596211912}
-  - component: {fileID: 596211911}
   - component: {fileID: 596211910}
   m_Layer: 6
   m_Name: Cube (20)
@@ -2420,22 +2370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &596211911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 596211908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &596211912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2639,99 +2573,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629970552}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &686611458
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 686611461}
-  - component: {fileID: 686611460}
-  - component: {fileID: 686611459}
-  m_Layer: 0
-  m_Name: Terrain_(-1100.00, 0.00, -100.00)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!154 &686611459
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686611458}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: fb51285b7022f4828bf34cfa3e5a045d, type: 2}
-  m_EnableTreeColliders: 1
---- !u!218 &686611460
-Terrain:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686611458}
-  m_Enabled: 1
-  serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: fb51285b7022f4828bf34cfa3e5a045d, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
-  m_HeightmapMinimumLODSimplification: 0
-  m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
-  m_DrawHeightmap: 1
-  m_DrawInstanced: 0
-  m_DrawTreesAndFoliage: 1
-  m_StaticShadowCaster: 0
-  m_IgnoreQualitySettings: 0
-  m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
-  m_BakeLightProbesForTrees: 1
-  m_PreserveTreePrototypeLayers: 0
-  m_DeringLightProbesForTrees: 1
-  m_ReceiveGI: 1
-  m_ScaleInLightmap: 0.0256
-  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
-  m_GroupingID: 0
-  m_RenderingLayerMask: 1
-  m_AllowAutoConnect: 1
-  m_EnableHeightmapRayTracing: 1
-  m_EnableTreesAndDetailsRayTracing: 0
-  m_TreeMotionVectorModeOverride: 3
---- !u!4 &686611461
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686611458}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1100, y: 0, z: -100}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717232973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,7 +2585,6 @@ GameObject:
   - component: {fileID: 717232979}
   - component: {fileID: 717232978}
   - component: {fileID: 717232977}
-  - component: {fileID: 717232976}
   - component: {fileID: 717232975}
   m_Layer: 6
   m_Name: Cube (30)
@@ -2780,22 +2620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &717232976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 717232973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &717232977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2882,7 +2706,6 @@ GameObject:
   - component: {fileID: 732230835}
   - component: {fileID: 732230834}
   - component: {fileID: 732230833}
-  - component: {fileID: 732230832}
   - component: {fileID: 732230831}
   m_Layer: 6
   m_Name: Cube (18)
@@ -2918,22 +2741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &732230832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732230829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &732230833
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3020,7 +2827,6 @@ GameObject:
   - component: {fileID: 747363248}
   - component: {fileID: 747363247}
   - component: {fileID: 747363246}
-  - component: {fileID: 747363245}
   - component: {fileID: 747363249}
   m_Layer: 6
   m_Name: Cube (14)
@@ -3044,22 +2850,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &747363245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747363243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &747363246
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3158,7 +2948,6 @@ GameObject:
   - component: {fileID: 811589155}
   - component: {fileID: 811589154}
   - component: {fileID: 811589153}
-  - component: {fileID: 811589152}
   - component: {fileID: 811589151}
   m_Layer: 6
   m_Name: Cube (17)
@@ -3194,22 +2983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &811589152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811589149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &811589153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3474,7 +3247,6 @@ GameObject:
   - component: {fileID: 886153948}
   - component: {fileID: 886153947}
   - component: {fileID: 886153946}
-  - component: {fileID: 886153945}
   - component: {fileID: 886153944}
   m_Layer: 6
   m_Name: Cube (35)
@@ -3510,22 +3282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &886153945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886153942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &886153946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3790,7 +3546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1086022174}
-  - component: {fileID: 1086022173}
   - component: {fileID: 1086022177}
   - component: {fileID: 1086022172}
   - component: {fileID: 1086022176}
@@ -3832,29 +3587,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!136 &1086022173
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086022170}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 1.7
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1086022174
 Transform:
   m_ObjectHideFlags: 0
@@ -4176,8 +3908,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 872321256}
   controller: {fileID: 1086022176}
-  fallThreshold: 3.5
-  respawnDelay: 1
+  fallThreshold: 1.5
+  respawnDelay: 0.5
   deathCounter: 0
   deathEffect: {fileID: 0}
   deathSound: {fileID: 0}
@@ -4193,7 +3925,6 @@ GameObject:
   - component: {fileID: 1158716958}
   - component: {fileID: 1158716957}
   - component: {fileID: 1158716956}
-  - component: {fileID: 1158716955}
   - component: {fileID: 1158716954}
   m_Layer: 6
   m_Name: Cube (32)
@@ -4229,22 +3960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1158716955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158716952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1158716956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4331,7 +4046,6 @@ GameObject:
   - component: {fileID: 1251675804}
   - component: {fileID: 1251675803}
   - component: {fileID: 1251675802}
-  - component: {fileID: 1251675801}
   - component: {fileID: 1251675805}
   m_Layer: 6
   m_Name: Cube (13)
@@ -4355,22 +4069,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1251675801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251675799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1251675802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4598,7 +4296,6 @@ GameObject:
   - component: {fileID: 1367205540}
   - component: {fileID: 1367205539}
   - component: {fileID: 1367205538}
-  - component: {fileID: 1367205537}
   - component: {fileID: 1367205536}
   m_Layer: 6
   m_Name: Cube (33)
@@ -4634,22 +4331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1367205537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367205534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1367205538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4902,7 +4583,6 @@ GameObject:
   - component: {fileID: 1500997528}
   - component: {fileID: 1500997527}
   - component: {fileID: 1500997526}
-  - component: {fileID: 1500997525}
   - component: {fileID: 1500997529}
   m_Layer: 6
   m_Name: Cube (12)
@@ -4926,22 +4606,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1500997525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500997523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1500997526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5040,7 +4704,6 @@ GameObject:
   - component: {fileID: 1533882680}
   - component: {fileID: 1533882679}
   - component: {fileID: 1533882678}
-  - component: {fileID: 1533882677}
   - component: {fileID: 1533882676}
   m_Layer: 6
   m_Name: Cube (27)
@@ -5076,22 +4739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1533882677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533882674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1533882678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5179,7 +4826,7 @@ GameObject:
   - component: {fileID: 1604061843}
   - component: {fileID: 1604061842}
   m_Layer: 6
-  m_Name: Cube (19)
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5286,7 +4933,6 @@ GameObject:
   - component: {fileID: 1606963076}
   - component: {fileID: 1606963075}
   - component: {fileID: 1606963074}
-  - component: {fileID: 1606963073}
   - component: {fileID: 1606963072}
   m_Layer: 6
   m_Name: Cube (25)
@@ -5322,22 +4968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1606963073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606963070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1606963074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5424,7 +5054,6 @@ GameObject:
   - component: {fileID: 1648845016}
   - component: {fileID: 1648845015}
   - component: {fileID: 1648845014}
-  - component: {fileID: 1648845017}
   - component: {fileID: 1648845018}
   m_Layer: 6
   m_Name: Cube (6)
@@ -5522,22 +5151,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648845012}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1648845017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1648845012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!114 &1648845018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,7 +5175,6 @@ GameObject:
   - component: {fileID: 1688422006}
   - component: {fileID: 1688422005}
   - component: {fileID: 1688422004}
-  - component: {fileID: 1688422003}
   - component: {fileID: 1688422007}
   m_Layer: 6
   m_Name: Cube (11)
@@ -5586,22 +5198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1688422003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688422001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1688422004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5700,7 +5296,6 @@ GameObject:
   - component: {fileID: 1716744420}
   - component: {fileID: 1716744419}
   - component: {fileID: 1716744418}
-  - component: {fileID: 1716744417}
   - component: {fileID: 1716744421}
   m_Layer: 6
   m_Name: Cube (8)
@@ -5724,22 +5319,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1936392764}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1716744417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716744415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1716744418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5838,7 +5417,6 @@ GameObject:
   - component: {fileID: 1718796178}
   - component: {fileID: 1718796177}
   - component: {fileID: 1718796176}
-  - component: {fileID: 1718796179}
   - component: {fileID: 1718796180}
   m_Layer: 6
   m_Name: Cube (5)
@@ -5936,22 +5514,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718796174}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1718796179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718796174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!114 &1718796180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6105,7 +5667,6 @@ GameObject:
   - component: {fileID: 1910326119}
   - component: {fileID: 1910326118}
   - component: {fileID: 1910326117}
-  - component: {fileID: 1910326116}
   - component: {fileID: 1910326115}
   m_Layer: 6
   m_Name: Cube (26)
@@ -6141,22 +5702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1910326116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910326113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &1910326117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6369,6 +5914,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1604061839}
+  - {fileID: 198404610}
   - {fileID: 12904168}
   - {fileID: 186575668}
   - {fileID: 219695297}
@@ -6379,7 +5926,6 @@ Transform:
   - {fileID: 512225889}
   - {fileID: 1948692563}
   - {fileID: 596211909}
-  - {fileID: 1604061839}
   - {fileID: 1718796175}
   - {fileID: 1648845013}
   - {fileID: 415048363}
@@ -6418,7 +5964,6 @@ GameObject:
   - component: {fileID: 1948692566}
   - component: {fileID: 1948692565}
   - component: {fileID: 1948692564}
-  - component: {fileID: 1948692567}
   - component: {fileID: 1948692568}
   m_Layer: 6
   m_Name: Cube (4)
@@ -6516,22 +6061,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948692562}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1948692567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948692562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!114 &1948692568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6663,7 +6192,6 @@ GameObject:
   - component: {fileID: 2000955271}
   - component: {fileID: 2000955270}
   - component: {fileID: 2000955269}
-  - component: {fileID: 2000955268}
   - component: {fileID: 2000955267}
   m_Layer: 6
   m_Name: Cube (34)
@@ -6699,22 +6227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2000955268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000955265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &2000955269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6801,7 +6313,6 @@ GameObject:
   - component: {fileID: 2002258116}
   - component: {fileID: 2002258115}
   - component: {fileID: 2002258114}
-  - component: {fileID: 2002258113}
   - component: {fileID: 2002258112}
   m_Layer: 6
   m_Name: Cube (16)
@@ -6837,22 +6348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2002258113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002258110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &2002258114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7083,7 +6578,6 @@ GameObject:
   - component: {fileID: 2095993732}
   - component: {fileID: 2095993731}
   - component: {fileID: 2095993730}
-  - component: {fileID: 2095993729}
   - component: {fileID: 2095993728}
   m_Layer: 6
   m_Name: Cube (31)
@@ -7119,22 +6613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2095993729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2095993726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &2095993730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7221,7 +6699,6 @@ GameObject:
   - component: {fileID: 2104181944}
   - component: {fileID: 2104181943}
   - component: {fileID: 2104181942}
-  - component: {fileID: 2104181941}
   - component: {fileID: 2104181940}
   m_Layer: 6
   m_Name: Cube (24)
@@ -7257,22 +6734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a1e60e7d16442408cd3a28856a1525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2104181941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104181938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b485d9d212734bb0bf87ddd1acefee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryDirection: {x: 0, y: 1, z: 0}
-  localDirection: 0
-  triggerScale: {x: 1.25, y: 1.25, z: 1.25}
-  penetrationDepthThreshold: 0.2
 --- !u!65 &2104181942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7361,4 +6822,3 @@ SceneRoots:
   - {fileID: 1922966974}
   - {fileID: 965730700}
   - {fileID: 1431572326}
-  - {fileID: 686611461}

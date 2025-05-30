@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(BoxCollider))]
+// [RequireComponent(typeof(BoxCollider))]
 public class PassThroughPlatform3D : MonoBehaviour
 {
     private BoxCollider _collider;
