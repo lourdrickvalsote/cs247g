@@ -101,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
         // Initial ground snap
         SnapToGroundImmediate();
+
+        transform.position = new Vector3(-15f, 5f, 5f);
         
         // Initialize grounded state
         wasGrounded = isGrounded;
@@ -108,6 +110,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("test");
+        // Check if dialogue is active
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+        {
+            Debug.Log("dialogue active");
+            return;
+        }
+
         // Flip sprite based on movement direction
         bool facingRight = true;
         if (moveInput.x < 0)
