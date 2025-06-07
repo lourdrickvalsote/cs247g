@@ -26,6 +26,15 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sr;
     public Animator animator;
 
+    [Header("Audio")]
+    public AudioSource audioSource;              // Main audio source for sound effects
+    public AudioClip jumpSound;                  // Sound when jumping
+    public AudioClip landSound;                  // Sound when landing
+    public AudioClip layerChangeSound;          // Sound when changing layers
+    public AudioClip[] footstepSounds;          // Array of footstep sounds for variety
+    public float footstepInterval = 0.3f;       // Time between footstep sounds
+    public float audioVolume = 1f;              // Master volume for player sounds
+
     [Header("Effects")]
     public GameObject smokePrefab;          // Drag your smoke particle system prefab here
     public Transform smokeSpawnPoint;       // Optional: specific spawn point, if null uses player position
@@ -43,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Internal variables
     private Vector2 moveInput;
     private bool isGrounded;
+    private bool wasGrounded = true;        // Track previous grounded state for landing detection
     private RaycastHit groundHit;
     private bool jumpRequested;
     private float lastJumpTime;
@@ -55,6 +65,9 @@ public class PlayerController : MonoBehaviour
     private GameObject activeRunningParticles;
     private bool wasMoving = false;
     private bool wasFacingRight = true; // Track previous facing direction
+    
+    // Audio variables
+    private float lastFootstepTime;
 
     void Start()
     {
@@ -68,6 +81,17 @@ public class PlayerController : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
 
+        // Get or create AudioSource
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+        
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.volume = audioVolume;
+        }
+
         // Freeze rotation to prevent tipping over
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
@@ -77,6 +101,9 @@ public class PlayerController : MonoBehaviour
 
         // Initial ground snap
         SnapToGroundImmediate();
+        
+        // Initialize grounded state
+        wasGrounded = isGrounded;
     }
 
     void Update()
@@ -105,6 +132,9 @@ public class PlayerController : MonoBehaviour
         // Handle running particles
         HandleRunningParticles(facingRight);
 
+        // Handle footstep sounds
+        HandleFootstepSounds();
+
         // Update previous facing direction
         if (moveInput.x != 0)
         {
@@ -113,6 +143,32 @@ public class PlayerController : MonoBehaviour
 
         // Detect ground each frame to update isGrounded state
         DetectGround();
+        
+        // Check for landing
+        CheckForLanding();
+    }
+
+    void HandleFootstepSounds()
+    {
+        // Play footstep sounds while moving and grounded
+        bool shouldPlayFootsteps = isGrounded && Mathf.Abs(moveInput.x) > minSpeedForParticles;
+        
+        if (shouldPlayFootsteps && Time.time > lastFootstepTime + footstepInterval)
+        {
+            PlayFootstepSound();
+            lastFootstepTime = Time.time;
+        }
+    }
+
+    void CheckForLanding()
+    {
+        // Check if we just landed (wasn't grounded, now is grounded)
+        if (isGrounded && !wasGrounded)
+        {
+            PlayLandSound();
+        }
+        
+        wasGrounded = isGrounded;
     }
 
     void UpdateAnimations()
@@ -216,6 +272,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // PLAY LAYER CHANGE SOUND
+            PlayLayerChangeSound();
+            
             // SPAWN SMOKE EFFECT BEFORE LAYER CHANGE
             SpawnSmokeEffect();
             
@@ -226,6 +285,45 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(newPosition);
             lastChangeTime = Time.time;
             moveInput.y = 0f;
+        }
+    }
+
+    // AUDIO METHODS
+    void PlayJumpSound()
+    {
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound, audioVolume);
+        }
+    }
+
+    void PlayLandSound()
+    {
+        if (landSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(landSound, audioVolume);
+        }
+    }
+
+    void PlayLayerChangeSound()
+    {
+        if (layerChangeSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(layerChangeSound, audioVolume);
+        }
+    }
+
+    void PlayFootstepSound()
+    {
+        if (footstepSounds != null && footstepSounds.Length > 0 && audioSource != null)
+        {
+            // Pick a random footstep sound for variety
+            AudioClip footstep = footstepSounds[Random.Range(0, footstepSounds.Length)];
+            if (footstep != null)
+            {
+                // Play at slightly lower volume than other sounds
+                audioSource.PlayOneShot(footstep, audioVolume * 0.7f);
+            }
         }
     }
 
@@ -424,6 +522,9 @@ public class PlayerController : MonoBehaviour
 
     void PerformJump()
     {
+        // PLAY JUMP SOUND
+        PlayJumpSound();
+        
         // Apply jump force
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
