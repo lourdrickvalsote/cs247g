@@ -24,7 +24,21 @@ public class PlayerController : MonoBehaviour
     [Header("Components")]
     public Rigidbody rb;
     public SpriteRenderer sr;
-    public Animator animator;  // ADD THIS LINE
+    public Animator animator;
+
+    [Header("Effects")]
+    public GameObject smokePrefab;          // Drag your smoke particle system prefab here
+    public Transform smokeSpawnPoint;       // Optional: specific spawn point, if null uses player position
+    public float smokeDestroyTime = 5f;     // How long before smoke is destroyed
+    
+    [Header("Running Effects")]
+    public GameObject runningParticlesRightPrefab; // Particles for moving right
+    public GameObject runningParticlesLeftPrefab;  // Particles for moving left
+    public Transform feetPosition;                 // Position for feet particles (recommended)
+    public float minSpeedForParticles = 0.1f;      // Minimum speed to show particles
+    public Vector3 particleOffset = new Vector3(0f, -0.5f, 0f); // Base offset from player position
+    public Vector3 rightMovementOffset = new Vector3(-0.3f, 0f, 0f); // Additional offset when moving right
+    public Vector3 leftMovementOffset = new Vector3(0.3f, 0f, 0f);   // Additional offset when moving left
 
     // Internal variables
     private Vector2 moveInput;
@@ -36,6 +50,11 @@ public class PlayerController : MonoBehaviour
     private float lastChangeTime;
     public bool dropRequested;
     public float currentZ = 0f;
+    
+    // Running particles variables
+    private GameObject activeRunningParticles;
+    private bool wasMoving = false;
+    private bool wasFacingRight = true; // Track previous facing direction
 
     void Start()
     {
@@ -46,7 +65,6 @@ public class PlayerController : MonoBehaviour
         if (sr == null)
             sr = GetComponentInChildren<SpriteRenderer>();
 
-        // ADD THIS BLOCK
         if (animator == null)
             animator = GetComponent<Animator>();
 
@@ -64,25 +82,39 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Flip sprite based on movement direction
+        bool facingRight = true;
         if (moveInput.x < 0)
         {
             sr.flipX = false;
-            // Debug.Log("face left");
+            facingRight = false;
         }
         else if (moveInput.x > 0)
         {
             sr.flipX = true;
-            // Debug.Log("face right");
+            facingRight = true;
+        }
+        else
+        {
+            // Not moving horizontally, keep previous direction
+            facingRight = wasFacingRight;
         }
 
-        // ADD ANIMATION UPDATES HERE
+        // Update animations
         UpdateAnimations();
+
+        // Handle running particles
+        HandleRunningParticles(facingRight);
+
+        // Update previous facing direction
+        if (moveInput.x != 0)
+        {
+            wasFacingRight = facingRight;
+        }
 
         // Detect ground each frame to update isGrounded state
         DetectGround();
     }
 
-    // ADD THIS NEW METHOD
     void UpdateAnimations()
     {
         if (animator == null) return;
@@ -98,7 +130,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Apply horizontal movement
-        // Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
         Vector3 moveDirection = new Vector3(moveInput.x, 0, 0);
         Vector3 targetVelocity = moveDirection * speed;
 
@@ -128,7 +159,7 @@ public class PlayerController : MonoBehaviour
             SnapToGround();
         }
 
-        // Debug.Log($"[FixedUpdate End] rb.position = {rb.position}, rb.velocity = {rb.linearVelocity}");
+        // Correct Z position for layer system
         Vector3 correctedPosition = rb.position;
         correctedPosition.z = currentZ;
         rb.MovePosition(correctedPosition);
@@ -185,10 +216,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Vector3 newPosition = (rb.position.z + yPosition) * Vector3.forward;
-            // newPosition.y = rb.position.y;
-            // newPosition.x = rb.position.x;
-            // rb.MovePosition(newPosition);
+            // SPAWN SMOKE EFFECT BEFORE LAYER CHANGE
+            SpawnSmokeEffect();
+            
             currentZ = rb.position.z + yPosition;
             Vector3 newPosition = rb.position;
             newPosition.z += yPosition;
@@ -197,6 +227,150 @@ public class PlayerController : MonoBehaviour
             lastChangeTime = Time.time;
             moveInput.y = 0f;
         }
+    }
+
+    void SpawnSmokeEffect()
+    {
+        if (smokePrefab == null)
+        {
+            Debug.LogWarning("Smoke prefab not assigned in PlayerController!");
+            return;
+        }
+
+        // Determine spawn position
+        Vector3 spawnPosition;
+        if (smokeSpawnPoint != null)
+        {
+            spawnPosition = smokeSpawnPoint.position;
+        }
+        else
+        {
+            // Use player's position (you can add offset here if needed)
+            spawnPosition = transform.position;
+        }
+
+        // Instantiate the smoke effect
+        GameObject smokeInstance = Instantiate(smokePrefab, spawnPosition, Quaternion.identity);
+        
+        // Optional: Auto-destroy the smoke after set time to prevent scene clutter
+        if (smokeDestroyTime > 0)
+        {
+            Destroy(smokeInstance, smokeDestroyTime);
+        }
+        
+        Debug.Log($"Smoke spawned at position: {spawnPosition}");
+    }
+
+    void HandleRunningParticles(bool facingRight)
+    {
+        // Check if player is moving horizontally and is grounded
+        bool isMoving = isGrounded && Mathf.Abs(moveInput.x) > minSpeedForParticles;
+
+        if (isMoving && !wasMoving)
+        {
+            // Start running particles
+            StartRunningParticles(facingRight);
+        }
+        else if (!isMoving && wasMoving)
+        {
+            // Stop running particles
+            StopRunningParticles();
+        }
+        else if (isMoving && activeRunningParticles != null)
+        {
+            // Check if direction changed while moving
+            if (facingRight != wasFacingRight)
+            {
+                // Direction changed, switch particle systems
+                StopRunningParticles();
+                StartRunningParticles(facingRight);
+            }
+            else
+            {
+                // Update particles position while running
+                UpdateRunningParticlesPosition(facingRight);
+            }
+        }
+
+        wasMoving = isMoving;
+    }
+
+    void StartRunningParticles(bool facingRight)
+    {
+        GameObject prefabToUse = facingRight ? runningParticlesRightPrefab : runningParticlesLeftPrefab;
+        
+        if (prefabToUse == null)
+        {
+            Debug.LogWarning($"Running particles prefab not assigned for {(facingRight ? "right" : "left")} direction!");
+            return;
+        }
+
+        // Don't create new particles if they already exist
+        if (activeRunningParticles != null)
+            return;
+
+        // Determine spawn position
+        Vector3 spawnPosition = GetRunningParticlesPosition(facingRight);
+
+        // Create running particles
+        activeRunningParticles = Instantiate(prefabToUse, spawnPosition, Quaternion.identity);
+        
+        Debug.Log($"Running particles started for {(facingRight ? "right" : "left")} direction");
+    }
+
+    void StopRunningParticles()
+    {
+        if (activeRunningParticles != null)
+        {
+            // Get particle system component to stop emission
+            ParticleSystem ps = activeRunningParticles.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                // Stop emission but let existing particles finish
+                var emission = ps.emission;
+                emission.enabled = false;
+                
+                // Destroy the GameObject after particles have time to fade out
+                Destroy(activeRunningParticles, ps.main.startLifetime.constantMax + 1f);
+            }
+            else
+            {
+                // If no particle system found, destroy immediately
+                Destroy(activeRunningParticles);
+            }
+            
+            activeRunningParticles = null;
+            Debug.Log("Running particles stopped");
+        }
+    }
+
+    void UpdateRunningParticlesPosition(bool facingRight)
+    {
+        if (activeRunningParticles != null)
+        {
+            activeRunningParticles.transform.position = GetRunningParticlesPosition(facingRight);
+        }
+    }
+
+    Vector3 GetRunningParticlesPosition(bool facingRight)
+    {
+        Vector3 position;
+        
+        if (feetPosition != null)
+        {
+            position = feetPosition.position;
+        }
+        else
+        {
+            // Use player position with base offset
+            position = transform.position + particleOffset;
+        }
+
+        // Add directional offset based on movement direction
+        Vector3 directionalOffset = facingRight ? rightMovementOffset : leftMovementOffset;
+        position += directionalOffset;
+        
+        return position;
     }
 
     public void OnLayerChange(InputAction.CallbackContext context)
@@ -259,7 +433,10 @@ public class PlayerController : MonoBehaviour
         // Set grounded to false immediately
         isGrounded = false;
 
-        // ADD ANIMATION TRIGGER FOR JUMP
+        // Stop running particles when jumping
+        StopRunningParticles();
+
+        // Animation trigger for jump
         if (animator != null)
         {
             animator.SetTrigger("Jump");
