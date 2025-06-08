@@ -5748,7 +5748,7 @@ Transform:
   m_GameObject: {fileID: 1238655234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 242, y: 13, z: 0.5}
+  m_LocalPosition: {x: 242, y: 14.52, z: 0.5}
   m_LocalScale: {x: 5, y: 0.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7489,7 +7489,7 @@ MonoBehaviour:
     - text: These mountains are my home.
       speakerName: Cool Guy
       displayDuration: 1
-    - text: I wonder waht could be on the other side?
+    - text: I wonder what could be on the other side?
       speakerName: Cool Guy
       displayDuration: 1
     - text: I heard some rumors about mysterious men...
