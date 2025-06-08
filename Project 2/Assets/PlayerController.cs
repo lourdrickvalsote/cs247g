@@ -95,13 +95,12 @@ public class PlayerController : MonoBehaviour
         // Freeze rotation to prevent tipping over
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        transform.position = Vector3.zero;
-
         currentZ = rb.position.z;
 
         // Initial ground snap
         SnapToGroundImmediate();
 
+        // Set custom start position
         transform.position = new Vector3(-15f, 5f, 5f);
         
         // Initialize grounded state
@@ -110,14 +109,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("test");
-        // Check if dialogue is active
+        // Check if dialogue is active - if so, stop processing most player updates
         if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
         {
-            Debug.Log("dialogue active");
+            // During dialogue, only allow essential updates (like gravity)
+            // Don't process movement, animations, particles, or footsteps
+            DetectGround(); // Still need to detect ground for physics
+            CheckForLanding(); // Still need to detect landing for audio
             return;
         }
 
+        // Normal player update logic (only when dialogue is NOT active)
+        
         // Flip sprite based on movement direction
         bool facingRight = true;
         if (moveInput.x < 0)
@@ -195,6 +198,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Physics updates continue even during dialogue (for gravity, etc.)
+        
         // Apply horizontal movement
         Vector3 moveDirection = new Vector3(moveInput.x, 0, 0);
         Vector3 targetVelocity = moveDirection * speed;
@@ -481,8 +486,13 @@ public class PlayerController : MonoBehaviour
         return position;
     }
 
+    // INPUT METHODS - WITH DIALOGUE BLOCKING
     public void OnLayerChange(InputAction.CallbackContext context)
     {
+        // Block layer change input during dialogue
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+            return;
+            
         // register layer change on button press
         if (context.started)
         {
@@ -500,6 +510,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnPlatformDrop(InputAction.CallbackContext context)
     {
+        // Block platform drop input during dialogue
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+            return;
+            
         if (context.started)
         {
             dropRequested = true;
@@ -509,11 +523,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        // Block movement input during dialogue
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+        {
+            moveInput = Vector2.zero; // Stop movement
+            return;
+        }
+        
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        // Block jump input during dialogue
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueActive())
+            return;
+            
         // Only register jump on button press, not release
         if (context.started)
         {
@@ -633,6 +658,22 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log($"Snapping to ground: Target Y={targetY}, Current Y={rb.position.y}, Distance={currentDistance}");
             }
+        }
+    }
+    
+    // PUBLIC METHOD: Stop horizontal movement (called by DialogueManager)
+    public void StopHorizontalMovement()
+    {
+        if (rb != null)
+        {
+            Vector3 velocity = rb.linearVelocity;
+            velocity.x = 0f; // Stop horizontal movement
+            rb.linearVelocity = velocity;
+            
+            // Also clear movement input
+            moveInput.x = 0f;
+            
+            Debug.Log("Player horizontal movement stopped");
         }
     }
 }
