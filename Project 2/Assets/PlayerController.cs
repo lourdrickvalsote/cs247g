@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
     
     // Audio variables
     private float lastFootstepTime;
+    private bool isJumping = false;     // Track if we're currently jumping
 
     void Start()
     {
@@ -189,11 +190,30 @@ public class PlayerController : MonoBehaviour
         if (animator == null) return;
 
         // Update movement speed (for walk/run animations)
-        float movementSpeed = Mathf.Abs(moveInput.x);
-        animator.SetFloat("Speed", movementSpeed);
+        // Don't update speed if we're jumping to prevent animation conflicts
+        if (!isJumping)
+        {
+            float movementSpeed = Mathf.Abs(moveInput.x);
+            animator.SetFloat("Speed", movementSpeed);
+        }
 
-        // Update grounded state (for jump/land animations)
-        animator.SetBool("IsGrounded", isGrounded);
+        // Update grounded state with better logic
+        if (isGrounded && isJumping)
+        {
+            // We just landed - end jump state
+            isJumping = false;
+            animator.SetBool("IsGrounded", true);
+        }
+        else if (isGrounded && !isJumping)
+        {
+            // Normal grounded state
+            animator.SetBool("IsGrounded", true);
+        }
+        else if (!isGrounded)
+        {
+            // In air
+            animator.SetBool("IsGrounded", false);
+        }
     }
 
     void FixedUpdate()
@@ -560,6 +580,9 @@ public class PlayerController : MonoBehaviour
         // PLAY JUMP SOUND
         PlayJumpSound();
         
+        // Set jumping state
+        isJumping = true;
+        
         // Apply jump force
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
@@ -576,6 +599,8 @@ public class PlayerController : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Jump");
+            animator.SetBool("IsGrounded", false);  // Explicitly set not grounded
+            animator.SetFloat("Speed", 0f);         // Stop movement animation
         }
 
         if (debugGroundDetection)
